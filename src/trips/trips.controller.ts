@@ -1,29 +1,24 @@
 import { Controller, Post, Body, Get } from "@nestjs/common";
-import { start } from "repl";
+
 import { TripsService } from "./trips.service";
 
-@Controller('api')
+import { Trip } from "./trips.interface";
+import { Observable } from "rxjs";
+
+@Controller()
 export class TripsController {
 
-    constructor(private readonly tripsService: TripsService) {
-
+    constructor(
+        private readonly tripsService: TripsService) {
     }
 
     @Post('trips')
-    addProduct(
-        @Body('startAdress') startAdress: string, 
-        @Body('destinationAdress') destinationAdress: string, 
-        @Body('price') price: number, 
-        @Body('date') date: Date,
-    ) {
-        const id = this.tripsService.insertTrip(startAdress, destinationAdress, price, date);
-        return {
-            id: id
-        };
+    addTrip(@Body() trip: Trip): Observable<Trip> {
+        return this.tripsService.insertTrip(trip);
     }
 
     @Get('trips')
     getAllTrips(){
-        return this.tripsService.getTrips();
+        return this.tripsService.findAllTrips();
     }
 }

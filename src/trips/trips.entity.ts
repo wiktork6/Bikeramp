@@ -5,16 +5,16 @@ export class TripEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({type: "varchar", length: 50})
     startAdress: string;
 
-    @Column()
+    @Column({type: "varchar", length: 50})
     destinationAdress: string;
     
-    @Column()
+    @Column({type: "numeric"})
     distance: number;
 
-    @Column()
+    @Column({type: "numeric"})
     price: number;
     
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})

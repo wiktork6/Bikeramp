@@ -21,4 +21,13 @@ export class TripsService {
     findAllTrips(): Observable<Trip[]> {
         return from(this.tripRepository.find());
     }
+
+    getWeeklyStats(){
+
+    }
+
+    
+    getMonthlyStats(){
+        
+    }
 }

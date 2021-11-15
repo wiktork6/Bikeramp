@@ -4,19 +4,19 @@ import { TripsService } from "./trips.service";
 
 import { Trip } from "./trips.class";
 
-@Controller()
+@Controller('trips')
 export class TripsController {
 
     constructor(
         private readonly tripsService: TripsService) {
     }
 
-    @Post('trips')
+    @Post()
     addTrip(@Body() trip: Trip) {
         return this.tripsService.insertTrip(trip);
     }
 
-    @Get('trips')
+    @Get()
     getAllTrips(){
         return this.tripsService.findAllTrips();
     }

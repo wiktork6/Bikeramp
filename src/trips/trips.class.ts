@@ -1,25 +1,26 @@
-import { IsNumber, IsString, IsDate, IsNotEmpty} from 'class-validator';
-import {Type} from 'class-transformer'
+import { IsNumber, IsString, IsDate, IsNotEmpty } from 'class-validator';
+import { Type } from 'class-transformer'
 
 export class Trip {
+    
     id?: number;
 
     @IsString()
     @IsNotEmpty()
-    startAdress?: string;
+    startAdress: string;
 
     @IsString()
     @IsNotEmpty() 
-    destinationAdress?: string;
+    destinationAdress: string;
 
     distance?: number;
 
     @IsNotEmpty()
     @IsNumber()
-    price?: number;
+    price: number;
 
     @IsNotEmpty()
     @IsDate()
     @Type(() => Date)
-    date?: Date;
+    date: Date;
 }

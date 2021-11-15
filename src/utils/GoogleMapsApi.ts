@@ -2,18 +2,19 @@ const axios = require('axios');
 
 export class GoogleMapsApi{
 
-    constructor(private readonly startAdress, private readonly endAdress){
+    constructor(private readonly startAdress: string, private readonly endAdress: string){
 
     }
 
     config = {
         method: 'get',
-        url: `https://maps.googleapis.com/maps/api/directions/json?origin=${this.startAdress}&destination=${this.endAdress}&key=${process.env.GOOGLE_API_KEY}`,
+        url: encodeURI(`https://maps.googleapis.com/maps/api/directions/json?origin=${this.startAdress}&destination=${this.endAdress}&key=${process.env.GOOGLE_API_KEY}`),
         headers: { }
     };
 
 
     private makeGetRequest: any = async () => {
+        console.log(this.config.url);
         const response = await axios(this.config);
         return await response.data;
     

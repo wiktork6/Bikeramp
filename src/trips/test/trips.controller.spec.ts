@@ -33,7 +33,7 @@ describe('TripsController', () => {
             })
 
             test('then it should call tripsService', () => {
-                expect(tripsService.findAllTrips()).toHaveBeenCalled();
+                expect(tripsService.findAllTrips).toHaveBeenCalled();
             })
 
             test('then it should return trips', () => {
@@ -58,12 +58,13 @@ describe('TripsController', () => {
         })
 
         test('then it should call tripsService', () => {
-            expect(tripsService.insertTrip).toHaveBeenCalledWith(
-                createdTrip.id,
-                createdTrip.startAdress,
-                createdTrip.destinationAdress,
-                createdTrip.price,
-                createdTrip.date
+            expect(tripsService.insertTrip).toHaveBeenCalledWith({
+                id: createdTrip.id,
+                startAdress: createdTrip.startAdress,
+                destinationAdress: createdTrip.destinationAdress,
+                price: createdTrip.price,
+                date: createdTrip.date
+            }
             )
         })
 

@@ -15,8 +15,6 @@ export class GoogleMapsApi{
 
     private makeGetRequest: any = async () => {
         const response = await axios(this.config);
-            // console.log(response.data.routes[0].legs[0].distance.value)
-            // console.log(response.data)
         return await response.data;
     
     }

@@ -21,13 +21,4 @@ export class TripsController {
         return this.tripsService.findAllTrips();
     }
 
-    @Get('stats/weekly')
-    getWeeklyStats(){
-        return this.tripsService.getWeeklyStats();
-    }
-
-    @Get('stats/monthly')
-    getMonthlyStats(){
-        return this.tripsService.getMonthlyStats();
-    }
 }

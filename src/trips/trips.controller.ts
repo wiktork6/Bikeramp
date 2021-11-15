@@ -2,7 +2,7 @@ import { Controller, Post, Body, Get } from "@nestjs/common";
 
 import { TripsService } from "./trips.service";
 
-import { Trip } from "./trips.interface";
+import { Trip } from "./trips.class";
 
 @Controller()
 export class TripsController {

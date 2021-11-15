@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Trip } from "./trips.interface";
+import { Trip } from "./trips.class";
 import { Repository } from "typeorm";
 import { TripEntity } from "./trips.entity";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -22,10 +22,10 @@ export class TripsService {
     async insertTrip(trip: Trip): Promise<Trip> {
         const googleMapsApi = new GoogleMapsApi(trip.startAdress, trip.destinationAdress);
 
-        return googleMapsApi.getDistance().then((distance)=>{
-            trip.distance = distance/1000;
-            return this.tripRepository.save(trip);
-        });
+        const distance = await googleMapsApi.getDistance();
+        trip.distance = distance/1000;
+
+        return this.tripRepository.save(trip);
         
     }
 
